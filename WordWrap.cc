@@ -13,19 +13,15 @@ int main(int argc, char *argv[]) {
     //currlen, number of characters on current line
 
     theArg = argv[1];
-
-    if(argc == 3){
-
-        theArgArg = argv[2];
-        fstream inarg;
-        inarg.open(theArgArg.c_str());
-        inarg >> wraplen;
-
-    }
+    theArgArg = argv[2];
 
     ifstream infile;
     infile.open(theArg.c_str()); //This is a c-style string, For some reason it doesnt accept normal strings
     string word;
+
+    fstream inarg;
+    inarg.open(theArgArg.c_str());
+    inarg >> wraplen;
 
 
 
@@ -34,7 +30,7 @@ int main(int argc, char *argv[]) {
 
     wordlen = word.length();
         //cout << wordlen;
-        if(currlen > 0 && currlen + wordlen <= wraplen){
+        if(currlen > 0 && currlen + wordlen < wraplen){
             cout<<' ';
             currlen++;
         }
@@ -80,3 +76,4 @@ int main(int argc, char *argv[]) {
     cout << endl;
 
 }
+
